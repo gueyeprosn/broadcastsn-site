@@ -1,0 +1,14 @@
+# Secrets : ne jamais publier
+mail.env
+*.env.local
+.env
+.env.*
+
+# Générés
+build/
+app/node_modules/
+app/.next/
+node_modules/
+.next/
+npm-debug.log*
+*.tgz

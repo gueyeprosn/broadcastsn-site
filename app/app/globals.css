@@ -1,0 +1,107 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* Thème clair par défaut (valeurs RVB brutes pour les modificateurs d'opacité). */
+  :root {
+    color-scheme: light;
+    --c-bg: 244 243 239; /* #F4F3EF */
+    --c-fg: 8 9 11; /* #08090B */
+    --c-surface: 234 233 228; /* #EAE9E4 */
+    --c-surface-2: 224 223 217;
+    --c-muted: 85 90 99; /* #555A63 — 6,2:1 sur le fond */
+    --c-signal: 122 88 0; /* #7A5800 — 5,9:1 sur le fond */
+  }
+
+  /* Bandeaux sombres : toute section marquée s'inverse avec ses descendants. */
+  .theme-dark {
+    color-scheme: dark;
+    --c-bg: 8 9 11;
+    --c-fg: 244 243 239;
+    --c-surface: 21 23 27; /* #15171B */
+    --c-surface-2: 29 32 37;
+    --c-muted: 146 151 161; /* #9297A1 */
+    --c-signal: 255 201 9; /* #FFC909 */
+    @apply bg-ink text-bone;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    /* Décale les ancres pour ne pas passer sous l'en-tête fixe. */
+    scroll-padding-top: 6rem;
+  }
+
+  body {
+    @apply bg-ink text-bone font-sans antialiased;
+    /* Aucun débordement horizontal, quelle que soit la largeur. */
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    @apply bg-accent text-onaccent;
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-bone ring-offset-2 ring-offset-ink;
+  }
+
+  /* Titres : capitales condensées. La police n'existe qu'en une graisse :
+     on interdit au navigateur d'en fabriquer une fausse en gras. */
+  h1, h2, h3, h4 {
+    @apply font-display uppercase;
+    font-weight: 400;
+    font-synthesis: none;
+    letter-spacing: 0.005em;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+}
+
+@layer components {
+  .shell {
+    @apply mx-auto w-full max-w-shell px-5 sm:px-8 lg:px-12;
+  }
+
+  /* Filet de séparation, repris sur tout le site. */
+  .hairline {
+    @apply border-bone/[0.14];
+  }
+
+  /* Étiquette technique : capitales en chasse fixe. */
+  .label {
+    @apply font-mono text-[0.68rem] uppercase tracking-[0.16em];
+  }
+
+  /* Mot mis en avant dans un titre : surligné au jaune du logo. */
+  /* Le dégradé limite le jaune à la hauteur des capitales : un fond plein
+     déborderait sur la ligne du dessus avec un interlignage serré. */
+  .mark {
+    @apply px-[0.08em] text-onaccent;
+    background: linear-gradient(to bottom, transparent 0.2em, #ffc909 0.2em, #ffc909 calc(100% - 0.12em), transparent calc(100% - 0.12em));
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+  }
+
+  /* Point final carré, signature des grands titres. */
+  .dot::after {
+    content: '';
+    @apply ml-[0.06em] inline-block h-[0.16em] w-[0.16em] bg-accent align-baseline;
+  }
+}
+
+/* Respect de la préférence système : toute animation est neutralisée. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

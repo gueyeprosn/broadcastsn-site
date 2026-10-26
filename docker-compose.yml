@@ -1,0 +1,44 @@
+# Site broadcastsn.com — stack indépendant du projet mini-noc-broadcast.
+# Aucun port publié sur l'hôte : le reverse proxy nginx du NOC joint ce conteneur
+# par son nom, via le réseau noc_net déclaré ici comme externe.
+name: broadcastsn
+
+services:
+  web:
+    build:
+      context: ./app
+    container_name: broadcastsn-web
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      PORT: "3000"
+      HOSTNAME: "0.0.0.0"
+    # Identifiants SMTP des alertes de devis (voir mail.env.example).
+    # Fichier facultatif : absent, le site fonctionne sans alerte courriel.
+    env_file:
+      - path: ./mail.env
+        required: false
+    networks: [noc_net]
+    volumes:
+      # Dépôt des demandes de devis (une ligne JSON par demande).
+      # Lire : docker compose exec web cat /data/devis.jsonl
+      - devis_data:/data
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:3000/"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+
+volumes:
+  devis_data: {}
+
+networks:
+  noc_net:
+    external: true
+    name: mini-noc-broadcast_noc_net
