@@ -45,7 +45,7 @@ check /google4e7da42451b1fd05.html
 
 echo "=== Contenu ==="
 html=$(curl -s --max-time 20 "$BASE/")
-for needle in '<title>' 'og:title' 'og:image' 'canonical' 'application/ld+json'; do
+for needle in '<title>' 'og:title' 'og:image' 'canonical' 'application/ld+json' 'google-site-verification'; do
   if grep -q "$needle" <<<"$html"; then
     printf '  OK    %s présent\n' "$needle"
   else

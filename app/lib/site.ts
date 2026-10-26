@@ -27,7 +27,7 @@ export const site = {
    * Code de vérification Google Search Console (méthode « balise HTML »),
    * c'est-à-dire la valeur de content="…" fournie par Google. null : pas de balise.
    */
-  googleSiteVerification: null as string | null,
+  googleSiteVerification: '8TCruvHgnk5aYzlV-XQC4xx73qLe1O9_iCVJczH5CyM' as string | null,
 } as const;
 
 /**

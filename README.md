@@ -290,8 +290,9 @@ engagements de service, pas comme des résultats démontrés.
   `app/public/google4e7da42451b1fd05.html` est servi à la racine du site.
   **Ne jamais le supprimer ni le renommer** : Google revérifie régulièrement sa
   présence, et la propriété est perdue sinon. `verify.sh` le contrôle.
-  (Alternative non utilisée : `site.googleSiteVerification` dans `lib/site.ts`
-  pour la méthode « balise HTML ».)
+  La méthode « balise HTML » est aussi en place (`site.googleSiteVerification`
+  dans `lib/site.ts`, balise `google-site-verification` sur toutes les pages) :
+  ne pas la retirer non plus.
 
 ### Hors du site — à faire par le propriétaire
 
