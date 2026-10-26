@@ -116,7 +116,7 @@ export default function ProjectCard({ project, index }: { project: Project; inde
         )}
 
         {rest.length > 0 && (
-          <div className="grid grid-cols-2 gap-4">
+          <div className={`grid gap-4 ${rest.length >= 3 ? 'grid-cols-3' : 'grid-cols-2'}`}>
             {rest.map((img) => (
               <IllustrationFrame
                 key={img.src}
@@ -124,7 +124,7 @@ export default function ProjectCard({ project, index }: { project: Project; inde
                 alt={img.alt}
                 position={img.position}
                 ratio="aspect-[4/3]"
-                sizes="(min-width: 1024px) 25vw, 50vw"
+                sizes={rest.length >= 3 ? '(min-width: 1024px) 17vw, 33vw' : '(min-width: 1024px) 25vw, 50vw'}
               />
             ))}
           </div>

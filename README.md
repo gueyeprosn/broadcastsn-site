@@ -180,12 +180,13 @@ une fois confirmées.
 
 ### Réalisations — `app/lib/content.ts`, tableau `projects`
 
-Trois projets publiés le 2026-10-26, fournis par le propriétaire et **recoupés** :
-vidéo publique vérifiée (titre et chaîne), photo Broadcast SN de l'événement
-quand elle existe.
+Quatre projets publiés le 2026-10-26, fournis par le propriétaire. Trois sont
+**recoupés** publiquement (vidéo vérifiée : titre et chaîne) ; l'Afrik Impact
+Summit est publié sur **confirmation écrite** du propriétaire, avec ses photos.
 
 | Projet | Vérification |
 |---|---|
+| Afrik Impact Summit — African Leadership Group, Denver (USA), 2023-2024 | Confirmé par écrit par le propriétaire ; logos ALG / Afrik Impact sur ses photos (`images/alg/`) ; lien vers la chaîne YouTube officielle d'ALG |
 | Sports Business Forum — Atlantic Council Africa Center / SEED Project, 4 mars 2022 | Vidéo sur la chaîne Atlantic Council ; logos identiques sur la photo `8.jpg` (et le montage `13.png`) |
 | Rencontres Santé Numérique 2021 — Amref Health Africa, Dakar, 1er-2 déc. 2021 | Vidéo sur la chaîne Amref Health Africa (France). Aucune photo maison identifiée : la fiche montre la miniature YouTube |
 | Forum de Dakar #2 — 2021 | Vidéo publiée par **Phrenos EU** ; habillage « Dakar #2 » visible sur le montage `13.png` |
@@ -193,10 +194,11 @@ quand elle existe.
 - [ ] **Forum de Dakar #2 : client à confirmer.** La proposition reçue indiquait
       « Afrika Innovation », mais la vidéo est publiée par Phrenos EU : la fiche
       ne cite aucun client tant que ce n'est pas tranché.
-- [ ] **Non publiés, en attente de confirmation** : Afrik Impact Summit 2023-2024
-      et délégation Colorado → Sénégal (African Leadership Group, Denver),
-      l'ancienneté « 14 ans » et la mention « Sénégal et États-Unis ». Aucune
-      vidéo ni photo de ces projets n'a été fournie.
+- [x] Confirmés par écrit le 2026-10-26 et publiés : Afrik Impact Summit,
+      ancienneté « 14 ans » (`site.experience`), « Sénégal et États-Unis »
+      (`site.countries`).
+- La fiche « délégation du Colorado au Sénégal » a été **retirée à la
+  demande du propriétaire** (2026-10-26) : ne pas la remettre sans son accord.
 - [ ] Une photo maison des Rencontres Santé Numérique, si elle existe.
 
 ### Décisions éditoriales à valider

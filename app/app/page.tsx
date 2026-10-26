@@ -142,7 +142,7 @@ export default function HomePage() {
             <p id="references-titre" className="label text-muted">Références</p>
             <p className="mt-2 font-display text-2xl uppercase leading-none">Sénégal · États-Unis</p>
           </div>
-          <ul className="grid gap-px bg-bone/[0.14] sm:grid-cols-2 xl:grid-cols-5">
+          <ul className="grid gap-px bg-bone/[0.14] sm:grid-cols-2 xl:grid-cols-4">
             {projects.map((p) => (
               <li key={p.id} className="bg-ink">
                 <a

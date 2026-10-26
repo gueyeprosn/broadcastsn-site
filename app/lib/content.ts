@@ -124,9 +124,10 @@ export const method = [
  * montrant l'événement quand il y en a une. Le client n'est indiqué que s'il est
  * établi ; sinon on cite la chaîne qui publie la vidéo, sans extrapoler.
  *
- * Exception assumée : les deux projets African Leadership Group (Denver) n'ont
- * ni vidéo dédiée ni photo maison. Ils sont publiés sur confirmation écrite du
- * propriétaire (2026-10-26), avec un lien vers la chaîne officielle du client.
+ * L'Afrik Impact Summit (African Leadership Group, Denver) est publié sur
+ * confirmation écrite du propriétaire (2026-10-26), avec un lien vers la chaîne
+ * officielle du client et ses photos (images/alg). La fiche « délégation du
+ * Colorado au Sénégal » a été retirée à sa demande le même jour.
  */
 export type Project = {
   id: string;
@@ -158,22 +159,25 @@ export const projects: Project[] = [
       'Diffusion en ligne des séquences retenues',
     ],
     video: { url: 'https://www.youtube.com/@AfricanLeadershipGroup', channel: 'African Leadership Group' },
-    images: [],
-  },
-  {
-    id: 'delegation-colorado-senegal',
-    title: 'Délégation du Colorado au Sénégal',
-    kind: 'Délégation internationale',
-    client: 'African Leadership Group',
-    place: 'Sénégal',
-    date: '2023 — 2024',
-    scope: [
-      'Couverture de la visite de la délégation et des rencontres institutionnelles',
-      'Captation de terrain, portraits et interviews',
-      'Production de supports de communication pour la délégation',
-      'Livraison de contenus destinés à une diffusion aux États-Unis',
+    images: [
+      {
+        src: '/photos/alg-gala-regie-salle.jpg',
+        alt: 'Opérateur de Broadcast SN à sa régie pendant le gala Afrik Impact, sous un chapiteau, au milieu des invités attablés',
+      },
+      {
+        src: '/photos/alg-gala-multiviewer.jpg',
+        alt: 'Multiviewer et écran programme pendant un discours au gala Afrik Impact',
+      },
+      {
+        src: '/photos/alg-amphitheatre-regie.jpg',
+        alt: 'Régie de Broadcast SN installée dans les gradins d’une salle de spectacle, face à la scène',
+        position: '30% 50%',
+      },
+      {
+        src: '/photos/alg-conference-presse.jpg',
+        alt: 'Caméra et retour vidéo filmant une conférence de presse devant le fond African Leadership Group et Afrik Impact',
+      },
     ],
-    images: [],
   },
   {
     id: 'sports-business-forum',
