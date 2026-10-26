@@ -7,9 +7,9 @@ import { site, contact, hasDirectContact, whatsappLink } from '@/lib/site';
 import { WhatsAppIcon } from '@/components/WhatsAppButton';
 
 export const metadata: Metadata = {
-  title: 'Contact et demande de devis',
+  title: 'Devis captation vidéo et live streaming — Contact',
   description:
-    "Demandez un devis pour la captation, la diffusion en direct ou la production vidéo de votre événement au Sénégal.",
+    "Demandez un devis pour la captation vidéo, la diffusion en direct ou la production de votre événement au Sénégal, ou pour un projet de chaîne TV, web TV ou radio. Réponse par e-mail ou WhatsApp.",
   alternates: { canonical: '/contact' },
 };
 

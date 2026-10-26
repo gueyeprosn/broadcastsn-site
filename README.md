@@ -271,19 +271,34 @@ Les prestations décrivent un **périmètre d'intervention**, jamais des moyens
 techniques qui n'ont pas été confirmés. Les engagements sont présentés comme des
 engagements de service, pas comme des résultats démontrés.
 
-## 9. SEO
+## 9. SEO — référencement Google
 
-- Métadonnées par page, titres et descriptions rédigés
-- URL lisibles en français (`/services/captation-multicamera`)
-- Open Graph et Twitter Card, avec image de partage 1200×630 sur toutes les pages
-- Favicon et icône d'écran d'accueil (`app/icon.tsx`, `app/apple-icon.tsx`,
-  monogramme « SN » du logo, `components/BrandMark.tsx`)
-- Balises canoniques sur chaque page
-- `sitemap.xml` et `robots.txt` générés
-- Données structurées `Organization` **sans adresse ni téléphone** tant qu'ils
-  ne sont pas confirmés (une adresse approximative dans un schema.org alimente
-  de fausses fiches d'établissement)
-- Textes alternatifs sur toutes les images
+### Sur le site (fait le 2026-10-26)
+
+- Titre et description **orientés recherche** pour chaque prestation, distincts du
+  titre éditorial affiché (`lib/services.ts`, champ `seo`) : métier + lieu
+  (« Captation vidéo multicaméra à Dakar et au Sénégal », « Diffusion en direct
+  et live streaming au Sénégal », « Audit technique de régie TV, studio radio et
+  web TV »…). Pages principales retitrées de la même façon.
+- Données structurées : `Organization` + `ProfessionalService` sur toutes les
+  pages (prestations, zones Sénégal / États-Unis, contact e-mail + WhatsApp),
+  `Service` et `BreadcrumbList` sur chaque page de prestation
+  (`components/StructuredData.tsx`). **Toujours sans adresse postale** tant
+  qu'elle n'est pas confirmée.
+- `sitemap.xml` (16 URL), `robots.txt`, balises canoniques, Open Graph.
+- Vérification Google Search Console : renseigner `site.googleSiteVerification`
+  (`lib/site.ts`) avec le code de la méthode « balise HTML », puis déployer.
+
+### Hors du site — à faire par le propriétaire
+
+- [ ] **Google Search Console** : ajouter la propriété, la valider, soumettre
+      `https://sn.broadcastsn.com/sitemap.xml`, demander l'indexation de l'accueil.
+- [ ] **Fiche Google Business Profile** (Google Maps) : entreprise « zone
+      desservie » Dakar / Sénégal, catégorie production vidéo, site, WhatsApp.
+- [ ] **broadcastsn.com et www** ne répondent pas : redirection permanente (301)
+      vers `https://sn.broadcastsn.com` à configurer chez Hostinger.
+- [ ] Liens entrants : pages LinkedIn / Facebook de l'entreprise pointant vers
+      le site ; crédit « Captation : Broadcast SN » avec lien chez les clients.
 
 ## 10. Accessibilité et performance
 

@@ -20,6 +20,11 @@ export type Service = {
   group: ServiceGroup;
   /** Livrables remis au client (« Ce que vous recevez »). */
   deliverables?: string[];
+  /**
+   * Titre et description pour Google : les mots que tapent les clients
+   * (métier + lieu), distincts du titre éditorial affiché sur la page.
+   */
+  seo: { title: string; description: string };
 };
 
 export type ServiceGroup = 'evenementiel' | 'ingenierie';
@@ -45,6 +50,11 @@ export const serviceGroups: Record<ServiceGroup, { label: string; audience: stri
 export const services: Service[] = [
   {
     slug: 'captation-multicamera',
+    seo: {
+      title: 'Captation vidéo multicaméra à Dakar et au Sénégal',
+      description:
+        'Captation vidéo multicaméra de conférences, séminaires, cérémonies et événements à Dakar et partout au Sénégal : réalisation en direct, prise de son, rushes ou montage livrés.',
+    },
     title: 'Captation multicaméra',
     short:
       'Captation coordonnée des événements avec une réalisation adaptée au format et aux besoins du client.',
@@ -66,6 +76,11 @@ export const services: Service[] = [
   },
   {
     slug: 'diffusion-en-direct',
+    seo: {
+      title: 'Diffusion en direct et live streaming au Sénégal',
+      description:
+        'Retransmission en direct et live streaming de vos événements sur YouTube, Zoom ou votre site : multicaméra, formats hybrides, test de connexion sur site. Dakar et tout le Sénégal.',
+    },
     title: 'Diffusion en direct',
     short:
       'Solutions de retransmission en ligne, sous réserve de validation de la connectivité, du matériel et des plateformes nécessaires.',
@@ -87,6 +102,11 @@ export const services: Service[] = [
   },
   {
     slug: 'production-montage',
+    seo: {
+      title: 'Production et montage vidéo à Dakar',
+      description:
+        'Production et montage vidéo pour entreprises et institutions à Dakar : dérushage, habillage, sous-titrage, étalonnage, mixage et export pour le web, les réseaux sociaux et la projection.',
+    },
     title: 'Production et montage vidéo',
     short:
       'Conception et montage de contenus audiovisuels pour les événements et la communication professionnelle.',
@@ -106,6 +126,11 @@ export const services: Service[] = [
   },
   {
     slug: 'plateaux-tv',
+    seo: {
+      title: 'Réalisation de plateaux TV et d\'interviews au Sénégal',
+      description:
+        'Réalisation de plateaux TV, d\'interviews, de tables rondes et d\'émissions au Sénégal : conducteur, mise en place lumière et son, captation multicaméra et montage du programme.',
+    },
     title: 'Réalisation de plateaux TV',
     short:
       "Production de formats d'interviews, d'émissions et de plateaux, selon les moyens techniques disponibles.",
@@ -127,6 +152,11 @@ export const services: Service[] = [
   },
   {
     slug: 'ceremonies',
+    seo: {
+      title: 'Captation de cérémonies religieuses et culturelles au Sénégal',
+      description:
+        'Captation vidéo et retransmission de cérémonies religieuses, d\'événements culturels et de grands rassemblements au Sénégal, avec discrétion et respect du déroulé.',
+    },
     title: 'Couverture de cérémonies religieuses et culturelles',
     short:
       'Captation respectueuse et professionnelle de conférences, cérémonies et grands rassemblements.',
@@ -146,6 +176,11 @@ export const services: Service[] = [
   },
   {
     slug: 'films-institutionnels',
+    seo: {
+      title: 'Film institutionnel et vidéo d\'entreprise au Sénégal',
+      description:
+        'Réalisation de films institutionnels et de vidéos d\'entreprise au Sénégal : écriture, tournage sur site ou en plateau, montage et déclinaisons pour le web et les réseaux sociaux.',
+    },
     title: 'Films institutionnels',
     short:
       'Production de vidéos destinées à présenter les organisations, leurs activités, leurs projets et leurs actions.',
@@ -165,6 +200,11 @@ export const services: Service[] = [
   },
   {
     slug: 'audit-technique',
+    seo: {
+      title: 'Audit technique de régie TV, studio radio et web TV',
+      description:
+        'Audit technique pour chaînes de télévision, web TV et radios au Sénégal : inventaire de la régie et du studio, analyse de la chaîne de diffusion, risques et plan d\'action priorisé.',
+    },
     title: 'Audit technique',
     short:
       'État des lieux de votre régie, de votre studio ou de votre chaîne de diffusion, avec des recommandations classées par priorité.',
@@ -187,6 +227,11 @@ export const services: Service[] = [
   },
   {
     slug: 'architecture-technique-devis',
+    seo: {
+      title: 'Conception de régie TV, studio radio et web TV : architecture et devis',
+      description:
+        'Conception de l\'architecture technique de votre chaîne de télévision, web TV ou radio : régie, studio, encodage, diffusion et secours. Synoptique, liste de matériel et devis chiffré.',
+    },
     title: 'Architecture technique et devis',
     short:
       'Conception de votre installation et chiffrage du matériel : régie TV, studio radio, web TV ou chaîne de diffusion.',
@@ -211,6 +256,11 @@ export const services: Service[] = [
   },
   {
     slug: 'accompagnement-technique',
+    seo: {
+      title: 'Accompagnement technique pour chaînes TV, web TV et radios',
+      description:
+        'Accompagnement technique des chaînes de télévision, web TV et radios au Sénégal : suivi de projet, mise en service, tests avant antenne, formation des équipes et assistance.',
+    },
     title: 'Accompagnement technique',
     short:
       'Suivi du projet, mise en service, formation des équipes et assistance après le lancement.',

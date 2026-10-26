@@ -6,6 +6,7 @@ import PageHero from '@/components/PageHero';
 import IllustrationFrame from '@/components/IllustrationFrame';
 import { ButtonLink } from '@/components/Button';
 import { services, getService, serviceGroups } from '@/lib/services';
+import { ServiceStructuredData } from '@/components/StructuredData';
 
 type Params = { params: Promise<{ slug: string }> };
 
@@ -18,14 +19,14 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const service = getService(slug);
   if (!service) return { title: 'Prestation introuvable' };
   return {
-    title: service.title,
-    description: service.short,
+    title: service.seo.title,
+    description: service.seo.description,
     alternates: { canonical: `/services/${service.slug}` },
     // Un `openGraph` défini ici remplace celui du layout : l'image de partage
     // racine doit donc être redéclarée, sinon ces pages partent sans visuel.
     openGraph: {
-      title: `${service.title} — Broadcast SN`,
-      description: service.short,
+      title: `${service.seo.title} — Broadcast SN`,
+      description: service.seo.description,
       url: `/services/${service.slug}`,
       images: ['/opengraph-image'],
     },
@@ -47,6 +48,7 @@ export default async function ServiceDetailPage({ params }: Params) {
 
   return (
     <>
+      <ServiceStructuredData service={service} />
       <PageHero eyebrow={`${group.label} / ${group.audience}`} title={service.title} lead={service.short}>
         <Link
           href="/services"

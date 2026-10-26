@@ -9,9 +9,9 @@ import { commitments, method } from '@/lib/content';
 import { site } from '@/lib/site';
 
 export const metadata: Metadata = {
-  title: 'À propos',
+  title: 'À propos — production audiovisuelle à Dakar depuis 14 ans',
   description:
-    "Broadcast Senegal, structure audiovisuelle basée à Dakar : notre approche de la captation, de la production vidéo et de la couverture d'événements.",
+    "Broadcast Senegal, structure audiovisuelle basée à Dakar, 14 ans de terrain au Sénégal et aux États-Unis : notre approche de la captation, du direct et de l'ingénierie broadcast.",
   alternates: { canonical: '/a-propos' },
 };
 

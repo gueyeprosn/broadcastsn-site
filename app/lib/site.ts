@@ -16,13 +16,18 @@ export const site = {
   city: 'Dakar',
   country: 'Sénégal',
   description:
-    'Captation audiovisuelle, production vidéo et couverture événementielle pour les entreprises, les institutions et les organisations au Sénégal.',
+    'Captation vidéo multicaméra, diffusion en direct et production vidéo à Dakar et au Sénégal, et ingénierie broadcast pour les chaînes TV, web TV et radios.',
   /** Zone d'intervention : le Sénégal, sous réserve des contraintes de chaque projet. */
   coverage: 'Sénégal',
   /** Ancienneté confirmée par le propriétaire le 2026-10-26. */
   experience: '14 ans',
   /** Pays d'intervention confirmés par le propriétaire le 2026-10-26. */
   countries: ['Sénégal', 'États-Unis'],
+  /**
+   * Code de vérification Google Search Console (méthode « balise HTML »),
+   * c'est-à-dire la valeur de content="…" fournie par Google. null : pas de balise.
+   */
+  googleSiteVerification: null as string | null,
 } as const;
 
 /**

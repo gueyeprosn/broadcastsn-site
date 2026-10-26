@@ -32,7 +32,7 @@ const mono = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.legalName} — Captation audiovisuelle et production vidéo à Dakar`,
+    default: `${site.legalName} — Captation vidéo et diffusion en direct à Dakar`,
     template: `%s — ${site.name}`,
   },
   description: site.description,
@@ -43,15 +43,17 @@ export const metadata: Metadata = {
     locale: 'fr_SN',
     url: site.url,
     siteName: site.legalName,
-    title: `${site.legalName} — Captation audiovisuelle et production vidéo`,
+    title: `${site.legalName} — Captation vidéo et diffusion en direct à Dakar`,
     description: site.description,
   },
   twitter: {
     card: 'summary_large_image',
-    title: `${site.legalName} — Captation audiovisuelle et production vidéo`,
+    title: `${site.legalName} — Captation vidéo et diffusion en direct à Dakar`,
     description: site.description,
   },
   robots: { index: true, follow: true },
+  // Balise de vérification Google Search Console, émise seulement si le code est renseigné.
+  ...(site.googleSiteVerification ? { verification: { google: site.googleSiteVerification } } : {}),
 };
 
 export const viewport: Viewport = {

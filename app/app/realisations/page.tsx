@@ -7,7 +7,7 @@ import { projects, youtubeId } from '@/lib/content';
 import { site } from '@/lib/site';
 
 export const metadata: Metadata = {
-  title: 'Réalisations',
+  title: 'Réalisations : captations et directs au Sénégal et aux États-Unis',
   description:
     'Réalisations de Broadcast Senegal au Sénégal et aux États-Unis : Afrik Impact Summit (African Leadership Group, Denver), Sports Business Forum (Atlantic Council), Rencontres Santé Numérique (Amref Health Africa), Forum de Dakar #2.',
   alternates: { canonical: '/realisations' },

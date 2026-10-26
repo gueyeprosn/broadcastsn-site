@@ -6,9 +6,9 @@ import { ButtonLink } from '@/components/Button';
 import { sectors } from '@/lib/content';
 
 export const metadata: Metadata = {
-  title: "Secteurs d'activité",
+  title: 'Captation vidéo pour entreprises, institutions, ONG et médias au Sénégal',
   description:
-    "Entreprises, institutions, ONG, conférences, événements religieux et culturels, médias : nos interventions audiovisuelles par secteur au Sénégal.",
+    "Entreprises, institutions, ONG, conférences et séminaires, événements religieux et culturels, chaînes TV, web TV et radios : nos interventions audiovisuelles par secteur au Sénégal.",
   alternates: { canonical: '/secteurs' },
 };
 

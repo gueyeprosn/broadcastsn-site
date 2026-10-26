@@ -8,7 +8,7 @@ import { serviceGroups, servicesByGroup, type ServiceGroup } from '@/lib/service
 import SectionHeading from '@/components/SectionHeading';
 
 export const metadata: Metadata = {
-  title: 'Nos services',
+  title: 'Captation vidéo, live streaming et ingénierie broadcast au Sénégal',
   description:
     'Production événementielle (captation multicaméra, direct, montage, plateaux TV, cérémonies, films institutionnels) et ingénierie broadcast pour chaînes TV, web TV et radios : audit technique, architecture et devis, accompagnement.',
   alternates: { canonical: '/services' },
