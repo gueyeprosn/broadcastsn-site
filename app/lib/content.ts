@@ -55,10 +55,10 @@ export const sectors: Sector[] = [
   },
   {
     slug: 'medias',
-    title: 'Médias et production de programmes',
+    title: 'Chaînes TV, web TV et radios',
     description:
-      "Formats d'émission, plateaux d'interview et contenus destinés à la diffusion, produits en appui des équipes éditoriales.",
-    needs: ['Plateaux et interviews', 'Formats d’émission', 'Captation pour diffusion', 'Appui aux rédactions'],
+      "Production de programmes en appui des équipes éditoriales, et ingénierie broadcast : audit de l'installation, conception de l'architecture technique, devis et accompagnement jusqu'à l'antenne.",
+    needs: ['Plateaux et interviews', 'Formats d’émission', 'Audit et architecture technique', 'Accompagnement au lancement'],
     icon: MonitorPlay,
   },
 ];

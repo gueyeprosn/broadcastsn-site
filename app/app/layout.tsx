@@ -3,6 +3,7 @@ import { Anton, Inter, JetBrains_Mono } from 'next/font/google';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import StructuredData from '@/components/StructuredData';
+import WhatsAppButton from '@/components/WhatsAppButton';
 import { site } from '@/lib/site';
 import './globals.css';
 
@@ -72,6 +73,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Header />
         <main id="contenu">{children}</main>
         <Footer />
+        <WhatsAppButton />
         <StructuredData />
       </body>
     </html>

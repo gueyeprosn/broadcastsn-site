@@ -6,7 +6,7 @@ import ServiceCard from '@/components/ServiceCard';
 import Image from 'next/image';
 import IllustrationFrame from '@/components/IllustrationFrame';
 import Reveal from '@/components/Reveal';
-import { services } from '@/lib/services';
+import { services, servicesByGroup, serviceGroups } from '@/lib/services';
 import { sectors, commitments, method, projects } from '@/lib/content';
 import { site } from '@/lib/site';
 
@@ -173,14 +173,14 @@ export default function HomePage() {
           <Reveal>
             <SectionHeading
               split
-              eyebrow="Capter / produire / diffuser"
+              eyebrow="Métier 01 / Production événementielle"
               title="Tout le cycle de l'image"
               lead="Captation, réalisation, direct et montage forment une seule chaîne. Le périmètre de chaque prestation est arrêté avec vous au moment du devis."
             />
           </Reveal>
 
           <div className="mt-16 grid gap-x-8 gap-y-16 sm:grid-cols-2 lg:grid-cols-3">
-            {services.map((service, i) => (
+            {servicesByGroup('evenementiel').map((service, i) => (
               <Reveal key={service.slug} delay={(i % 3) * 80}>
                 <ServiceCard service={service} index={i} />
               </Reveal>
@@ -209,6 +209,57 @@ export default function HomePage() {
               ))}
             </ul>
           </Reveal>
+        </div>
+      </section>
+
+      {/* ---------------- Ingénierie broadcast ---------------- */}
+      <section id="ingenierie" className="theme-dark py-24 lg:py-32">
+        <div className="shell">
+          <Reveal>
+            <SectionHeading
+              split
+              eyebrow={`Métier 02 / ${serviceGroups.ingenierie.audience}`}
+              title="Ingénierie broadcast"
+              lead={serviceGroups.ingenierie.lead}
+            />
+          </Reveal>
+
+          <ol className="mt-16 grid gap-px bg-bone/[0.14] lg:grid-cols-3">
+            {servicesByGroup('ingenierie').map((service, i) => {
+              const Icon = service.icon;
+              return (
+                <li key={service.slug} className="flex flex-col bg-ink p-7 sm:p-9">
+                  <div className="flex items-center justify-between">
+                    <p className="label text-muted">
+                      <span className="text-signal">— {String(i + 1).padStart(2, '0')}</span>
+                    </p>
+                    <Icon size={22} strokeWidth={1.5} aria-hidden className="text-bone/60" />
+                  </div>
+                  <h3 className="mt-6 text-3xl leading-[1.1]">{service.title}</h3>
+                  <p className="mt-4 flex-1 text-sm leading-relaxed text-muted">{service.short}</p>
+                  {service.deliverables && (
+                    <div className="mt-7">
+                      <p className="label text-muted">Ce que vous recevez</p>
+                      <ul className="mt-3 flex flex-wrap gap-2">
+                        {service.deliverables.map((d) => (
+                          <li key={d} className="label border border-bone/25 px-2.5 py-1.5 text-bone/90">
+                            {d}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                  <a
+                    href={`/services/${service.slug}`}
+                    className="label mt-8 inline-flex items-center gap-2 text-signal"
+                  >
+                    Découvrir
+                    <ArrowRight size={14} aria-hidden />
+                  </a>
+                </li>
+              );
+            })}
+          </ol>
         </div>
       </section>
 

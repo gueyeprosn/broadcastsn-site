@@ -33,6 +33,7 @@ export const eventTypes = [
   'Cérémonie religieuse ou culturelle',
   'Plateau TV ou interview',
   'Film institutionnel',
+  'Projet technique : chaîne TV, web TV ou radio',
   'Autre',
 ] as const;
 
@@ -43,6 +44,9 @@ export const serviceOptions = [
   'Réalisation de plateau TV',
   'Couverture de cérémonie',
   'Film institutionnel',
+  'Audit technique',
+  'Architecture technique et devis',
+  'Accompagnement technique',
 ] as const;
 
 export const durations = [
@@ -98,7 +102,7 @@ export function validate(p: QuotePayload): FieldErrors {
   if (p.phone && !PHONE.test(p.phone))
     e.phone = 'Numéro invalide. Indiquez l’indicatif, par exemple +221 pour le Sénégal.';
 
-  if (!p.eventType) e.eventType = 'Précisez le type d’événement.';
+  if (!p.eventType) e.eventType = 'Précisez le type d’événement ou de projet.';
 
   if (p.eventDate) {
     const d = new Date(p.eventDate);

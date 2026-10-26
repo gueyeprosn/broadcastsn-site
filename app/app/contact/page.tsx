@@ -3,7 +3,8 @@ import { Mail, Phone, MapPin, Clock } from 'lucide-react';
 import PageHero from '@/components/PageHero';
 import QuoteForm from '@/components/QuoteForm';
 import { intakeMode } from '@/lib/intake';
-import { site, contact, hasDirectContact } from '@/lib/site';
+import { site, contact, hasDirectContact, whatsappLink } from '@/lib/site';
+import { WhatsAppIcon } from '@/components/WhatsAppButton';
 
 export const metadata: Metadata = {
   title: 'Contact et demande de devis',
@@ -60,6 +61,22 @@ export default async function ContactPage() {
                   </li>
                 )}
 
+                {contact.whatsapp && (
+                  <li className="flex items-start gap-3">
+                    <span className="mt-0.5 shrink-0 text-signal">
+                      <WhatsAppIcon size={17} />
+                    </span>
+                    <a
+                      href={whatsappLink() ?? undefined}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-bone/85 hover:text-signal"
+                    >
+                      WhatsApp {contact.whatsapp}
+                    </a>
+                  </li>
+                )}
+
                 {contact.phone && (
                   <li className="flex items-start gap-3">
                     <Phone size={17} className="mt-0.5 shrink-0 text-signal" aria-hidden />
@@ -92,9 +109,9 @@ export default async function ContactPage() {
             <div className="mt-5 rounded-card border hairline bg-surface/60 p-8">
               <h2 className="text-lg font-semibold">Zone d&rsquo;intervention</h2>
               <p className="mt-4 text-sm leading-relaxed text-muted">
-                {site.country} entier, sous réserve des contraintes logistiques et techniques
-                propres à chaque projet. Pour les événements hors de {site.city}, précisez le
-                lieu dès votre demande : il entre dans le calcul du dispositif.
+                {site.country} entier et États-Unis, sous réserve des contraintes logistiques
+                et techniques propres à chaque projet. Pour les événements hors de {site.city},
+                précisez le lieu dès votre demande : il entre dans le calcul du dispositif.
               </p>
             </div>
           </aside>

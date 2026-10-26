@@ -94,7 +94,8 @@ app/
   components/          composants réutilisables
   lib/
     site.ts            identité + COORDONNÉES À COMPLÉTER
-    services.ts        les 6 prestations
+    services.ts        les 9 prestations, en deux métiers (production
+                       événementielle / ingénierie broadcast)
     content.ts         secteurs, engagements, méthode, PORTFOLIO À REMPLIR
     validation.ts      validation du formulaire (client + serveur)
     intake.ts          enregistrement des demandes
@@ -157,6 +158,22 @@ Sans ce fichier, le site fonctionne comme avant, sans alerte.
 
 ---
 
+## 5 bis. Deux métiers (depuis le 2026-10-26)
+
+| Métier | Public | Prestations |
+|---|---|---|
+| Production événementielle | Entreprises, institutions, organisations | Captation multicaméra, diffusion en direct, production et montage, plateaux TV, cérémonies, films institutionnels |
+| Ingénierie broadcast | Chaînes de télévision, web TV, radios | Audit technique, architecture technique et devis, accompagnement technique |
+
+Le métier est porté par le champ `group` de chaque prestation (`lib/services.ts`).
+Les prestations d'ingénierie ont un champ `deliverables` (« Ce que vous
+recevez »). Présentation inspirée de la page services de DM Broadcast (structure
+numérotée et livrables), sans reprise de texte.
+
+- [ ] **À valider par le propriétaire** : le périmètre rédigé pour ces trois
+      prestations (notamment « réception, mise en service et tests avant
+      antenne » et « formation des équipes » dans l'accompagnement).
+
 ## 6. À COMPLÉTER par le propriétaire avant publication
 
 Rien de ce qui suit n'a été inventé. Ces champs sont volontairement vides et le
@@ -164,9 +181,11 @@ site s'adapte à leur absence.
 
 ### Coordonnées — `app/lib/site.ts`, objet `contact`
 
-- [ ] `email` — adresse électronique professionnelle
+- [x] `email` — `contact@broadcastsn.com` (confirmé le 2026-10-26)
 - [ ] `phone` — téléphone avec indicatif (`+221 …`)
-- [ ] `whatsapp` — numéro WhatsApp professionnel, si utilisé
+- [x] `whatsapp` — `+221 77 724 56 54` (confirmé le 2026-10-26) : bouton
+      flottant sur toutes les pages (`components/WhatsAppButton.tsx`), pied de
+      page et page Contact
 - [ ] `address` — adresse postale à Dakar
 
 Tant qu'une valeur vaut `null`, la ligne correspondante n'apparaît pas. La page

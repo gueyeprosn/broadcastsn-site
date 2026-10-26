@@ -4,12 +4,13 @@ import PageHero from '@/components/PageHero';
 import ServiceCard from '@/components/ServiceCard';
 import Reveal from '@/components/Reveal';
 import { ButtonLink } from '@/components/Button';
-import { services } from '@/lib/services';
+import { serviceGroups, servicesByGroup, type ServiceGroup } from '@/lib/services';
+import SectionHeading from '@/components/SectionHeading';
 
 export const metadata: Metadata = {
   title: 'Nos services',
   description:
-    'Captation multicaméra, diffusion en direct, production et montage vidéo, plateaux TV, couverture de cérémonies et films institutionnels au Sénégal.',
+    'Production événementielle (captation multicaméra, direct, montage, plateaux TV, cérémonies, films institutionnels) et ingénierie broadcast pour chaînes TV, web TV et radios : audit technique, architecture et devis, accompagnement.',
   alternates: { canonical: '/services' },
 };
 
@@ -18,19 +19,33 @@ export default function ServicesPage() {
     <>
       <PageHero
         eyebrow="Nos services"
-        title="Six prestations audiovisuelles, définies projet par projet"
-        lead="Chaque prestation décrit un périmètre d'intervention. Le dispositif technique, le nombre de postes et les livrables sont arrêtés au moment du devis, en fonction du lieu, de la durée et de l'usage prévu."
+        title="Deux métiers, une même exigence"
+        lead="Nous produisons vos événements, et nous accompagnons les chaînes de télévision, web TV et radios dans leurs projets techniques. Chaque prestation décrit un périmètre d'intervention, arrêté avec vous au moment du devis."
       />
 
-      <section className="py-20 lg:py-28">
-        <div className="shell grid gap-x-8 gap-y-16 sm:grid-cols-2 lg:grid-cols-3">
-          {services.map((service, i) => (
-            <Reveal key={service.slug} delay={i * 70}>
-              <ServiceCard service={service} index={i} />
-            </Reveal>
-          ))}
-        </div>
-      </section>
+      {(Object.keys(serviceGroups) as ServiceGroup[]).map((g, gi) => (
+        <section
+          key={g}
+          id={g}
+          className={`scroll-mt-24 py-20 lg:py-28 ${gi > 0 ? 'theme-dark' : ''}`}
+        >
+          <div className="shell">
+            <SectionHeading
+              split
+              eyebrow={`Métier ${String(gi + 1).padStart(2, '0')} / ${serviceGroups[g].audience}`}
+              title={serviceGroups[g].label}
+              lead={serviceGroups[g].lead}
+            />
+            <div className="mt-14 grid gap-x-8 gap-y-16 sm:grid-cols-2 lg:grid-cols-3">
+              {servicesByGroup(g).map((service, i) => (
+                <Reveal key={service.slug} delay={(i % 3) * 70}>
+                  <ServiceCard service={service} index={i} />
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+      ))}
 
       <section className="border-t hairline py-20 lg:py-28">
         <div className="shell text-center">

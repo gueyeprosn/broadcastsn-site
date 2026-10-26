@@ -174,7 +174,7 @@ export default function QuoteForm({ canReceive }: { canReceive: boolean }) {
 
         <div>
           <label className={labelCls} htmlFor="eventType">
-            Type d&rsquo;événement <span className="text-signal">*</span>
+            Type d&rsquo;événement ou de projet <span className="text-signal">*</span>
           </label>
           <select
             id="eventType" name="eventType" className={field} required

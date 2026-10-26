@@ -37,11 +37,18 @@ export const contact: {
   whatsapp: string | null;
   address: string | null;
 } = {
-  email: null,
+  // Confirmés par le propriétaire le 2026-10-26.
+  email: 'contact@broadcastsn.com',
   phone: null,
-  whatsapp: null,
+  whatsapp: '+221 77 724 56 54',
   address: null,
 };
+
+/** Lien WhatsApp direct (wa.me attend le numéro international sans « + » ni espaces). */
+export const whatsappLink = (text?: string) =>
+  contact.whatsapp
+    ? `https://wa.me/${contact.whatsapp.replace(/\D/g, '')}${text ? `?text=${encodeURIComponent(text)}` : ''}`
+    : null;
 
 /**
  * Réseaux sociaux — À COMPLÉTER. Uniquement des comptes officiels confirmés.

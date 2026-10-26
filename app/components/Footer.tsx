@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react';
 import Logo from './Logo';
-import { site, contact, socials, nav } from '@/lib/site';
+import { site, contact, socials, nav, whatsappLink } from '@/lib/site';
 import { services } from '@/lib/services';
 
 export default function Footer() {
@@ -54,6 +54,13 @@ export default function Footer() {
                 <li>
                   <a href={`mailto:${contact.email}`} className={linkCls}>
                     {contact.email}
+                  </a>
+                </li>
+              )}
+              {contact.whatsapp && (
+                <li>
+                  <a href={whatsappLink() ?? undefined} target="_blank" rel="noopener noreferrer" className={linkCls}>
+                    WhatsApp {contact.whatsapp}
                   </a>
                 </li>
               )}

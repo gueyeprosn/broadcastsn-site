@@ -5,7 +5,7 @@ import { ArrowLeft, ArrowRight, Check, Info } from 'lucide-react';
 import PageHero from '@/components/PageHero';
 import IllustrationFrame from '@/components/IllustrationFrame';
 import { ButtonLink } from '@/components/Button';
-import { services, getService } from '@/lib/services';
+import { services, getService, serviceGroups } from '@/lib/services';
 
 type Params = { params: Promise<{ slug: string }> };
 
@@ -38,11 +38,16 @@ export default async function ServiceDetailPage({ params }: Params) {
   const service = getService(slug);
   if (!service) notFound();
 
-  const others = services.filter((s) => s.slug !== service.slug).slice(0, 3);
+  // D'abord les prestations du même métier, puis les autres.
+  const others = [
+    ...services.filter((s) => s.slug !== service.slug && s.group === service.group),
+    ...services.filter((s) => s.group !== service.group),
+  ].slice(0, 3);
+  const group = serviceGroups[service.group];
 
   return (
     <>
-      <PageHero eyebrow="Prestation" title={service.title} lead={service.short}>
+      <PageHero eyebrow={`${group.label} / ${group.audience}`} title={service.title} lead={service.short}>
         <Link
           href="/services"
           className="mt-9 inline-flex items-center gap-2 text-sm text-muted transition-colors hover:text-signal"
@@ -70,6 +75,19 @@ export default async function ServiceDetailPage({ params }: Params) {
                 </li>
               ))}
             </ul>
+
+            {service.deliverables && (
+              <div className="theme-dark mt-10 rounded-card p-6 sm:p-7">
+                <h2 className="label font-mono text-signal">Ce que vous recevez</h2>
+                <ul className="mt-4 flex flex-wrap gap-2.5">
+                  {service.deliverables.map((d) => (
+                    <li key={d} className="label border border-bone/25 px-3 py-2 text-bone">
+                      {d}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
 
             {service.caveat && (
               <div className="mt-10 flex items-start gap-4 rounded-card border hairline bg-surface p-6">

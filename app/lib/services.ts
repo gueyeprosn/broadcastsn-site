@@ -1,5 +1,7 @@
 import type { LucideIcon } from 'lucide-react';
-import { Cctv, Radio, Clapperboard, Tv, Users, Building2 } from 'lucide-react';
+import {
+  Cctv, Radio, Clapperboard, Tv, Users, Building2, ClipboardCheck, DraftingCompass, LifeBuoy,
+} from 'lucide-react';
 
 export type Service = {
   slug: string;
@@ -14,10 +16,29 @@ export type Service = {
   icon: LucideIcon;
   /** Photo de terrain fournie par Broadcast SN (dans public/photos). */
   image: { src: string; alt: string; position?: string };
+  /** Métier : production événementielle, ou ingénierie pour les diffuseurs. */
+  group: ServiceGroup;
+  /** Livrables remis au client (« Ce que vous recevez »). */
+  deliverables?: string[];
+};
+
+export type ServiceGroup = 'evenementiel' | 'ingenierie';
+
+export const serviceGroups: Record<ServiceGroup, { label: string; audience: string; lead: string }> = {
+  evenementiel: {
+    label: 'Production événementielle',
+    audience: 'Entreprises, institutions, organisations',
+    lead: "Captation, réalisation, direct et montage forment une seule chaîne. Le périmètre de chaque prestation est arrêté avec vous au moment du devis.",
+  },
+  ingenierie: {
+    label: 'Ingénierie broadcast',
+    audience: 'Chaînes de télévision, web TV, radios',
+    lead: "Pour les diffuseurs : savoir où en est votre installation, concevoir celle dont vous avez besoin, puis l'amener jusqu'à l'antenne.",
+  },
 };
 
 /**
- * Six prestations. Les descriptions décrivent un périmètre d'intervention et
+ * Neuf prestations en deux métiers. Les descriptions décrivent un périmètre d'intervention et
  * non des moyens matériels ou humains : le parc technique et les équipes ne sont
  * pas documentés, on ne les affirme donc nulle part.
  */
@@ -40,6 +61,7 @@ export const services: Service[] = [
     caveat:
       "Le nombre de caméras et la configuration technique dépendent du lieu, de la durée et du budget : ils sont arrêtés au moment du devis.",
     icon: Cctv,
+    group: 'evenementiel',
     image: { src: '/photos/captation-stade.jpg', alt: "Cadreur de Broadcast SN derrière une caméra sur trépied, au bord du terrain d'un stade", position: '50% 12%' },
   },
   {
@@ -60,6 +82,7 @@ export const services: Service[] = [
     caveat:
       "Aucun direct n'est confirmé avant la validation de la connectivité sur le lieu de l'événement. Une liaison de secours peut être recommandée selon l'enjeu.",
     icon: Radio,
+    group: 'evenementiel',
     image: { src: '/photos/regie-direct.jpg', alt: "Opérateur au mélangeur vidéo pendant une diffusion en direct, écrans de contrôle et console audio" },
   },
   {
@@ -78,6 +101,7 @@ export const services: Service[] = [
       'Export aux formats convenus',
     ],
     icon: Clapperboard,
+    group: 'evenementiel',
     image: { src: '/photos/montage-diffusion.jpg', alt: "Techniciens devant les écrans de montage et de diffusion en régie" },
   },
   {
@@ -98,6 +122,7 @@ export const services: Service[] = [
     caveat:
       "La configuration du plateau dépend des moyens techniques disponibles pour le projet et du lieu retenu.",
     icon: Tv,
+    group: 'evenementiel',
     image: { src: '/photos/plateau-interview.jpg', alt: "Caméras et moniteur de contrôle installés pour une interview dans un salon" },
   },
   {
@@ -116,6 +141,7 @@ export const services: Service[] = [
       'Montage respectueux du déroulé de la cérémonie',
     ],
     icon: Users,
+    group: 'evenementiel',
     image: { src: '/photos/regie-lutte.jpg', alt: "Régie mobile pendant la retransmission d'un combat de lutte devant un large public" },
   },
   {
@@ -134,8 +160,80 @@ export const services: Service[] = [
       'Montage, habillage et déclinaisons de format',
     ],
     icon: Building2,
+    group: 'evenementiel',
     image: { src: '/photos/regie-conference.jpg', alt: "Équipe en régie de conférence, mélangeur vidéo et moniteurs des intervenants", position: '50% 40%' },
   },
+  {
+    slug: 'audit-technique',
+    title: 'Audit technique',
+    short:
+      'État des lieux de votre régie, de votre studio ou de votre chaîne de diffusion, avec des recommandations classées par priorité.',
+    body: [
+      "Avant d'investir, il faut savoir où en est l'installation. L'audit passe en revue l'existant — régie, plateau, studio radio, chaîne de diffusion hertzienne, IP ou streaming — pour établir ce qui fonctionne, ce qui fragilise l'antenne et ce qui freine vos projets.",
+      "Le rapport distingue l'urgent de l'utile : points de défaillance unique, équipements en fin de vie, flux mal maîtrisés, absence de secours, puis pistes d'évolution.",
+    ],
+    scope: [
+      'Inventaire du matériel et des logiciels en place',
+      'Analyse des flux audio, vidéo et réseau, de la source à la diffusion',
+      'Repérage des points de défaillance et des besoins de secours',
+      'Recommandations classées par priorité',
+    ],
+    deliverables: ['Rapport d’audit', 'Synoptique de l’existant', 'Plan d’action priorisé'],
+    caveat:
+      "L'étendue de l'audit — une régie, un studio ou toute la chaîne — est fixée au devis. Une visite sur site est nécessaire.",
+    icon: ClipboardCheck,
+    image: { src: '/photos/regie-studio.jpg', alt: "Réalisateur devant le multiviewer d'une régie de télévision" },
+    group: 'ingenierie',
+  },
+  {
+    slug: 'architecture-technique-devis',
+    title: 'Architecture technique et devis',
+    short:
+      'Conception de votre installation et chiffrage du matériel : régie TV, studio radio, web TV ou chaîne de diffusion.',
+    body: [
+      "Lancement d'une chaîne, d'une web TV ou d'une radio, ou modernisation d'une installation : l'architecture technique traduit votre projet éditorial en un système cohérent — sources, mélange, habillage, enregistrement, diffusion et secours.",
+      "Nous établissons le synoptique, la liste du matériel et le devis, en comparant les options quand plusieurs approches sont possibles, pour que vous décidiez en connaissant le coût et les compromis de chacune.",
+    ],
+    scope: [
+      'Recueil du besoin éditorial et des contraintes : budget, locaux, équipe',
+      'Conception de la régie, du plateau ou du studio, de l’encodage et de la diffusion',
+      'Synoptique et liste de matériel',
+      'Devis détaillé et comparaison des options',
+    ],
+    deliverables: ['Synoptique technique', 'Liste de matériel', 'Devis chiffré'],
+    icon: DraftingCompass,
+    image: {
+      src: '/photos/regie-studio-2.jpg',
+      alt: "Console audio et mur d'écrans d'une régie de diffusion",
+      position: '30% 50%',
+    },
+    group: 'ingenierie',
+  },
+  {
+    slug: 'accompagnement-technique',
+    title: 'Accompagnement technique',
+    short:
+      'Suivi du projet, mise en service, formation des équipes et assistance après le lancement.',
+    body: [
+      "Une installation bien conçue peut encore échouer au démarrage. L'accompagnement couvre la suite : coordination avec les fournisseurs, réception et mise en service du matériel, tests avant le passage à l'antenne.",
+      "Nous formons vos équipes à l'exploitation de leur installation et restons disponibles après le lancement, ponctuellement ou dans la durée.",
+    ],
+    scope: [
+      'Suivi du projet et coordination des fournisseurs',
+      'Réception, mise en service et tests avant antenne',
+      'Formation des opérateurs et des techniciens',
+      'Assistance après le lancement, ponctuelle ou suivie',
+    ],
+    deliverables: ['Dossier technique de l’installation', 'Formation des équipes', 'Assistance au démarrage'],
+    icon: LifeBuoy,
+    image: {
+      src: '/photos/montage-diffusion.jpg',
+      alt: 'Techniciens devant les écrans de diffusion et de streaming en régie',
+    },
+    group: 'ingenierie',
+  },
 ];
+
+export const servicesByGroup = (group: ServiceGroup) => services.filter((s) => s.group === group);
 
 export const getService = (slug: string) => services.find((s) => s.slug === slug);
