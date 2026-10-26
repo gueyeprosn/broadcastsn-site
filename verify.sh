@@ -40,6 +40,8 @@ check /brand/broadcast-sn-noir.png
 check /icon
 check /apple-icon
 check /opengraph-image
+# Fichier de validation Google Search Console : ne jamais le supprimer.
+check /google4e7da42451b1fd05.html
 
 echo "=== Contenu ==="
 html=$(curl -s --max-time 20 "$BASE/")

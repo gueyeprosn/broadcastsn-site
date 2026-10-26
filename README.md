@@ -286,12 +286,17 @@ engagements de service, pas comme des résultats démontrés.
   (`components/StructuredData.tsx`). **Toujours sans adresse postale** tant
   qu'elle n'est pas confirmée.
 - `sitemap.xml` (16 URL), `robots.txt`, balises canoniques, Open Graph.
-- Vérification Google Search Console : renseigner `site.googleSiteVerification`
-  (`lib/site.ts`) avec le code de la méthode « balise HTML », puis déployer.
+- **Google Search Console : site validé par fichier HTML** (2026-10-26).
+  `app/public/google4e7da42451b1fd05.html` est servi à la racine du site.
+  **Ne jamais le supprimer ni le renommer** : Google revérifie régulièrement sa
+  présence, et la propriété est perdue sinon. `verify.sh` le contrôle.
+  (Alternative non utilisée : `site.googleSiteVerification` dans `lib/site.ts`
+  pour la méthode « balise HTML ».)
 
 ### Hors du site — à faire par le propriétaire
 
-- [ ] **Google Search Console** : ajouter la propriété, la valider, soumettre
+- [ ] **Google Search Console** : fichier de validation en ligne ; cliquer
+      « Valider » dans Search Console, puis soumettre
       `https://sn.broadcastsn.com/sitemap.xml`, demander l'indexation de l'accueil.
 - [ ] **Fiche Google Business Profile** (Google Maps) : entreprise « zone
       desservie » Dakar / Sénégal, catégorie production vidéo, site, WhatsApp.
