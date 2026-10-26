@@ -296,8 +296,8 @@ engagements de service, pas comme des résultats démontrés.
 
 ### Hors du site — à faire par le propriétaire
 
-- [ ] **Google Search Console** : fichier de validation en ligne ; cliquer
-      « Valider » dans Search Console, puis soumettre
+- [x] **Google Search Console** : propriété `https://sn.broadcastsn.com/`
+      validée le 2026-10-26. Reste à soumettre
       `https://sn.broadcastsn.com/sitemap.xml`, demander l'indexation de l'accueil.
 - [ ] **Fiche Google Business Profile** (Google Maps) : entreprise « zone
       desservie » Dakar / Sénégal, catégorie production vidéo, site, WhatsApp.
